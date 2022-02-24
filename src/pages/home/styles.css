@@ -1,0 +1,32 @@
+.banner {
+	background-color: #f4f7fe;
+	height: 300px;
+	width: 100%;
+}
+
+.post-content {
+	text-align: justify;
+	margin-bottom: 10px;
+}
+
+img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+@media (min-width: 992px) {
+	.content-left {
+		padding-right: 50px;
+	}
+
+	.content-right {
+		padding-left: 50px;
+	}
+}
+
+.section {
+	margin-bottom: 50px;
+}
+
+
