@@ -1,5 +1,4 @@
 import axiosClient from "./axiosClient";
-import { Version } from "../constants";
 
 export const CourseAPI = {
 	getAll: () => {
