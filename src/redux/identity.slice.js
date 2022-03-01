@@ -55,18 +55,12 @@ const identitySlice = createSlice({
 			})
 			.addCase(signUpUser.fulfilled, (state, action) => {
 				state.signUp = Status.SUCCESS;
-				NotifyHelper.success("Sign up success. Confirm your account send to your email!");
+				NotifyHelper.success("Sign up success. Login your account now!");
 			})
 			.addCase(signUpUser.rejected, (state, action) => {
 				state.signUp = Status.FAILED;
 				if (action.payload) {
-					if (action.payload.message.includes("Username")) {
-						NotifyHelper.error("Invalid username!");
-					} else if (action.payload.message.includes("Email")) {
-						NotifyHelper.error("Invalid email!");
-					} else {
-						NotifyHelper.error(action.payload.message);
-					}
+					NotifyHelper.error(action.payload.message);
 				}
 			})
 			//#endregion
@@ -81,6 +75,7 @@ const identitySlice = createSlice({
 					"auth",
 					JSON.stringify({
 						token: action.payload.auth_token,
+						email: action.payload.email,
 					})
 				);
 				NotifyHelper.success("Login success!");

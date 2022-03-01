@@ -4,4 +4,8 @@ export class Auth {
 	isLogin = () => {
 		return this.auth !== null;
 	};
+
+	getEmail = () => {
+		return this.auth.email;
+	};
 }
