@@ -1,34 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { Form, Input, Button, Checkbox, Card } from "antd";
+import { MailOutlined, LockOutlined } from "@ant-design/icons";
+import { Link, Navigate, useLocation } from "react-router-dom";
+import { Form, Input, Button, Card } from "antd";
 import { LogoHeader } from "../components";
+import { useEffect } from "react";
 import { RegEx, IdentityUrl } from "../../../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { signInUser, resetIdentityState } from "../../../redux/identity.slice";
+import { Auth } from "../../../helpers";
+import { ClientUrl } from "../../../constants";
 import "./styles.scss";
 
 export const SignInPage = () => {
+	const dispatch = useDispatch();
+	const auth = new Auth();
+	const { state } = useLocation();
+
+	const signInStatus = useSelector((state) => state.identity.signIn);
+
+	const SignIn = (values) => {
+		const req = { body: values };
+		dispatch(signInUser(req));
+	};
+
 	const FormProps = {
-		lastName: {
-			rules: [{ required: true, message: "This field is required!" }],
-			style: { display: "inline-block", width: "calc(50% - 8px)" },
-		},
-		firstName: {
-			rules: [{ required: true, message: "This field is required!" }],
-			style: { display: "inline-block", width: "calc(50% - 8px)", margin: "0 0 0 16px" },
-		},
 		email: {
 			rules: [
 				{ required: true, message: "This field is required!" },
 				{ type: "email", message: "Invalid email!" },
-			],
-		},
-		userName: {
-			rules: [
-				{ required: true, message: "This field is required!" },
-				{
-					pattern: RegEx.USERNAME,
-					message: "Invalid username!",
-				},
 			],
 		},
 		password: {
@@ -44,37 +43,25 @@ export const SignInPage = () => {
 			],
 			hasFeedback: true,
 		},
-		rePassword: {
-			rules: [
-				{ required: true, message: "This field is required!" },
-				({ getFieldValue }) => ({
-					validator(_, value) {
-						if (!value || getFieldValue("password") === value) {
-							return Promise.resolve();
-						}
-						return Promise.reject(new Error("Confirmation password does not match"));
-					},
-				}),
-			],
-			dependencies: ["password"],
-			hasFeedback: true,
-		},
 	};
 
+	useEffect(() => {
+		return () => dispatch(resetIdentityState());
+	}, []);
+
+	if (auth.isLogin()) {
+		return <Navigate to={state?.from || ClientUrl.HOME}></Navigate>;
+	}
 	return (
 		<Card className="sign-in-page" title={<LogoHeader />} style={{ width: 400 }}>
-			<Form name="sign-in" initialValues={{ remember: true }}>
-				<Form.Item name="userName" {...FormProps.userName}>
-					<Input prefix={<UserOutlined />} placeholder="Username" />
+			<Form name="sign-in" onFinish={SignIn}>
+				<Form.Item name="email" {...FormProps.email}>
+					<Input prefix={<MailOutlined />} placeholder="Email" />
 				</Form.Item>
 				<Form.Item name="password" {...FormProps.password}>
 					<Input prefix={<LockOutlined />} placeholder="Password" type="password" />
 				</Form.Item>
-				<Form.Item>
-					<Form.Item name="remember" valuePropName="checked" noStyle>
-						<Checkbox>Remember</Checkbox>
-					</Form.Item>
-				</Form.Item>
+
 				<Form.Item>
 					<Button type="primary" htmlType="submit" className="button">
 						Sign in

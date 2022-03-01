@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { ClientLayout, IdentityLayout } from "./layouts";
 import { HomePage } from "./pages/client";
 import { SignInPage, SignUpPage } from "./pages/identity";
-import { ClientUrl, IdentityUrl } from "./constants";
+import { ClientUrl } from "./constants";
 import "./App.css";
 
 const App = () => {

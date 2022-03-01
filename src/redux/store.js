@@ -12,6 +12,7 @@ import {
 	REGISTER,
 } from "redux-persist";
 import settingSlice from "./setting.slice";
+import identitySlice from "./identity.slice";
 
 const persistConfig = {
 	key: "root",
@@ -21,6 +22,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
 	setting: settingSlice,
+	identity: identitySlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

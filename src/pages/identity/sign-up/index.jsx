@@ -9,27 +9,13 @@ import "./styles.scss";
 export const SignUpPage = () => {
 	//Component
 	const FormProps = {
-		lastName: {
+		name: {
 			rules: [{ required: true, message: "This field is required!" }],
-			style: { display: "inline-block", width: "calc(50% - 8px)" },
-		},
-		firstName: {
-			rules: [{ required: true, message: "This field is required!" }],
-			style: { display: "inline-block", width: "calc(50% - 8px)", margin: "0 0 0 16px" },
 		},
 		email: {
 			rules: [
 				{ required: true, message: "This field is required!" },
 				{ type: "email", message: "Invalid email!" },
-			],
-		},
-		userName: {
-			rules: [
-				{ required: true, message: "This field is required!" },
-				{
-					pattern: RegEx.USERNAME,
-					message: "Invalid username!",
-				},
 			],
 		},
 		password: {
@@ -65,7 +51,7 @@ export const SignUpPage = () => {
 	return (
 		<Card className="sign-up-page" title={<LogoHeader />} style={{ width: 400 }}>
 			<Form name="sign-up" initialValues={{ remember: true }}>
-				<Form.Item name="name" {...FormProps.email}>
+				<Form.Item name="name" {...FormProps.name}>
 					<Input prefix={<UserOutlined />} placeholder="Name" />
 				</Form.Item>
 				<Form.Item name="email" {...FormProps.email}>

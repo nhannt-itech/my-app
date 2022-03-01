@@ -10,7 +10,7 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(async (config) => {
 	const auth = JSON.parse(localStorage.getItem("auth"));
-	const token = auth ? auth.jwToken : null;
+	const token = auth ? auth.token : null;
 	if (token) {
 		config.headers.authorization = `Authorization: ${token}`;
 	}
