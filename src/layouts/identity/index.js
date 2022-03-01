@@ -1,6 +1,7 @@
 import "./styles.scss";
+import { Outlet } from "react-router-dom";
 
-const IdentityLayout = ({ children }) => {
+export const IdentityLayout = () => {
 	return (
 		<div
 			id="identity-layout"
@@ -10,8 +11,7 @@ const IdentityLayout = ({ children }) => {
 				alignItems: "center",
 			}}
 		>
-			{children}
+			<Outlet />
 		</div>
 	);
 };
-export default IdentityLayout;

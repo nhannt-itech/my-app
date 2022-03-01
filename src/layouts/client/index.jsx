@@ -2,7 +2,7 @@ import Header from "./header";
 import "./styles.css";
 import { Outlet } from "react-router-dom";
 
-const ClientLayout = () => {
+export const ClientLayout = () => {
 	return (
 		<div>
 			<Header />
@@ -12,5 +12,3 @@ const ClientLayout = () => {
 		</div>
 	);
 };
-
-export default ClientLayout;

@@ -1,16 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import ClientLayout from "./layout/client";
+import { ClientLayout, IdentityLayout } from "./layouts";
 import { HomePage } from "./pages/client";
+import { SignInPage, SignUpPage } from "./pages/identity";
+import { ClientUrl, IdentityUrl } from "./constants";
 import "./App.css";
 
 const App = () => {
 	return (
 		<Routes>
-			{/* <Route path="/identity/:path?">
-				<IdentityPages />
-			</Route> */}
 			<Route path="/" element={<ClientLayout />}>
-				<Route path="/" element={<HomePage />} />
+				<Route path={ClientUrl.HOME} element={<HomePage />} />
+			</Route>
+			<Route path="/identity" element={<IdentityLayout />}>
+				<Route path="sign-in" element={<SignInPage />} />
+				<Route path="sign-up" element={<SignUpPage />} />
 			</Route>
 		</Routes>
 	);

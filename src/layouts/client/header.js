@@ -1,5 +1,7 @@
 import { Layout, Menu } from "antd";
 import { Divider, Button } from "antd";
+import { Link } from "react-router-dom";
+import { IdentityUrl } from "../../constants";
 
 export const Header = () => {
 	return (
@@ -8,10 +10,14 @@ export const Header = () => {
 
 			<div className="identity-menu">
 				<Divider type="vertical" />
-				<Button className="btn">Login</Button>
-				<Button className="btn sign-in-btn" type="primary">
-					Sign Up
-				</Button>
+				<Link to={IdentityUrl.SIGN_IN}>
+					<Button className="btn">Login</Button>
+				</Link>
+				<Link to={IdentityUrl.SIGN_UP}>
+					<Button className="btn sign-in-btn" type="primary">
+						Sign Up
+					</Button>
+				</Link>
 			</div>
 
 			<Menu className="menu" mode="horizontal">
