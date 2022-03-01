@@ -1,6 +1,5 @@
 import { Layout, Menu } from "antd";
 import { Divider, Button } from "antd";
-import "./styles.css";
 
 export const Header = () => {
 	return (
@@ -26,3 +25,5 @@ export const Header = () => {
 		</Layout.Header>
 	);
 };
+
+export default Header;
