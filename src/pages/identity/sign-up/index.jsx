@@ -1,12 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
-import { RegEx, IdentityUrl } from "../../../constants";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { resetIdentityState, signUpUser } from "../../../redux/identity.slice";
+import { RegEx, IdentityUrl, ClientUrl, Status } from "../../../constants";
 import { LogoHeader } from "../components";
+import { Link, Navigate } from "react-router-dom";
 import { Form, Input, Button, Card } from "antd";
+import { Auth } from "../../../helpers";
 import "./styles.scss";
 
 export const SignUpPage = () => {
+	const signUpStatus = useSelector((state) => state.identity.signUp);
+	const dispatch = useDispatch();
+	const auth = new Auth();
+	useEffect(() => {
+		return () => dispatch(resetIdentityState());
+	}, []);
+
+	const SignUp = (values) => {
+		const req = { body: values };
+		dispatch(signUpUser(req));
+	};
+
 	//Component
 	const FormProps = {
 		name: {
@@ -48,9 +64,11 @@ export const SignUpPage = () => {
 		},
 	};
 
+	if (signUpStatus === Status.SUCCESS) return <Navigate to={IdentityUrl.SIGN_IN} />;
+	if (auth.isLogin()) return <Navigate to={ClientUrl.HOME} />;
 	return (
 		<Card className="sign-up-page" title={<LogoHeader />} style={{ width: 400 }}>
-			<Form name="sign-up" initialValues={{ remember: true }}>
+			<Form name="sign-up" initialValues={{ remember: true }} onFinish={SignUp}>
 				<Form.Item name="name" {...FormProps.name}>
 					<Input prefix={<UserOutlined />} placeholder="Name" />
 				</Form.Item>

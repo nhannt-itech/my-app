@@ -24,7 +24,6 @@ export const signInUser = createAsyncThunk("identity/signInUser", async (req, th
 	try {
 		const { body } = req;
 		const res = await IdentityAPI.signIn(body);
-		console.log(res);
 		return res;
 	} catch (err) {
 		return thunkAPI.rejectWithValue(err.response.data);
@@ -59,7 +58,6 @@ const identitySlice = createSlice({
 				NotifyHelper.success("Sign up success. Confirm your account send to your email!");
 			})
 			.addCase(signUpUser.rejected, (state, action) => {
-				console.log("hi");
 				state.signUp = Status.FAILED;
 				if (action.payload) {
 					if (action.payload.message.includes("Username")) {
