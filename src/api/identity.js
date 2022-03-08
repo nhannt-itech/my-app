@@ -10,7 +10,7 @@ export const IdentityAPI = {
 	 * @param   {string} body.password
 	 */
 	signUp: (body) => {
-		const url = "/register";
+		const url = "/auth/sign_up";
 		return axiosClient.post(url, body);
 	},
 	/**
@@ -21,7 +21,7 @@ export const IdentityAPI = {
 	 * @param   {string} body.password
 	 */
 	signIn: (body) => {
-		const url = "/authenticate";
+		const url = "/auth/sign_in";
 		return axiosClient.post(url, body);
 	},
 };

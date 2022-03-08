@@ -6,6 +6,6 @@ export class Auth {
 	};
 
 	getEmail = () => {
-		return this.auth.email;
+		return this.auth.user.email;
 	};
 }

@@ -75,7 +75,7 @@ const identitySlice = createSlice({
 					"auth",
 					JSON.stringify({
 						token: action.payload.auth_token,
-						email: action.payload.email,
+						user: action.payload.user,
 					})
 				);
 				NotifyHelper.success("Login success!");
