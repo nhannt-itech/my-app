@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { Form, Input, Button, Card } from "antd";
+
 import { LogoHeader } from "../components";
-import { useEffect } from "react";
 import { RegEx, IdentityUrl } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { signInUser, resetIdentityState } from "../../../redux/identity.slice";

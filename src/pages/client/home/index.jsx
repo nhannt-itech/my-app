@@ -1,8 +1,8 @@
 import { Row, Col, Typography, Button, Select, Card } from "antd";
 import { ShareAltOutlined, FlagOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import AuctionItem from "./auction-item";
-import "./styles.css";
+import { AuctionItem } from "./auction-item";
+import "./styles.scss";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -19,9 +19,9 @@ export const HomePage = () => {
 						<Title>Lorem ipsum dolor sit amet consectetur adipisicing.</Title>
 						<Text type="secondary">
 							<div className="post-content">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia iusto a optio
-								doloremque. Molestias ipsum optio deserunt veritatis tempore ex repudiandae amet et,
-								minima dolorum a id excepturi neque qui.
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia iusto a optio doloremque.
+								Molestias ipsum optio deserunt veritatis tempore ex repudiandae amet et, minima dolorum a id
+								excepturi neque qui.
 							</div>
 						</Text>
 						<br />
@@ -35,11 +35,11 @@ export const HomePage = () => {
 						<Title level={2}>About section</Title>
 						<Text type="secondary">
 							<div className="post-content">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis doloribus, illum,
-								magnam tempore velit dignissimos, mollitia dicta totam earum ut animi ad eos
-								repudiandae consectetur cum tenetur? Qui officia deleniti perferendis tempore,
-								incidunt nulla? Minima aliquam recusandae cumque doloribus, eius fugiat veniam,
-								porro itaque inventore minus vitae natus! Itaque, deleniti.
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis doloribus, illum, magnam
+								tempore velit dignissimos, mollitia dicta totam earum ut animi ad eos repudiandae
+								consectetur cum tenetur? Qui officia deleniti perferendis tempore, incidunt nulla? Minima
+								aliquam recusandae cumque doloribus, eius fugiat veniam, porro itaque inventore minus vitae
+								natus! Itaque, deleniti.
 							</div>
 						</Text>
 					</div>

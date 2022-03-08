@@ -3,7 +3,7 @@ import "./styles.css";
 
 const { Meta } = Card;
 
-const AuctionItem = ({ price, shippingCost, bids }) => {
+export const AuctionItem = ({ price, shippingCost, bids }) => {
 	return (
 		<div>
 			<Card
@@ -31,5 +31,3 @@ const AuctionItem = ({ price, shippingCost, bids }) => {
 		</div>
 	);
 };
-
-export default AuctionItem;
