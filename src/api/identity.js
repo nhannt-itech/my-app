@@ -24,4 +24,14 @@ export const IdentityAPI = {
 		const url = "/auth/sign_in";
 		return axiosClient.post(url, body);
 	},
+	/**
+	 * @desc    User confirm email
+	 *
+	 * @param   {object} params
+	 * @param   {string} params.token
+	 */
+	confirmEmail: (params) => {
+		const url = "/auth/confirm_email";
+		return axiosClient.get(url, { params });
+	},
 };

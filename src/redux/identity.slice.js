@@ -7,6 +7,7 @@ const initialState = {
 	userId: null,
 	signUp: Status.NULL,
 	signIn: Status.NULL,
+	confirmEmail: Status.NULL,
 };
 
 /* ---------------------ACTIONS--------------------- */
@@ -24,6 +25,16 @@ export const signInUser = createAsyncThunk("identity/signInUser", async (req, th
 	try {
 		const { body } = req;
 		const res = await IdentityAPI.signIn(body);
+		return res;
+	} catch (err) {
+		return thunkAPI.rejectWithValue(err.response.data);
+	}
+});
+
+export const confirmEmail = createAsyncThunk("identity/confirmEmail", async (req, thunkAPI) => {
+	try {
+		const { params } = req;
+		const res = await IdentityAPI.confirmEmail(params);
 		return res;
 	} catch (err) {
 		return thunkAPI.rejectWithValue(err.response.data);
@@ -85,6 +96,19 @@ const identitySlice = createSlice({
 				if (action.payload) {
 					NotifyHelper.error("Username or password is incorrect!");
 				}
+			})
+			//#endregion
+
+			//#region action: confirmEmail
+			.addCase(confirmEmail.pending, (state, action) => {
+				state.confirmEmail = Status.PENDING;
+			})
+			.addCase(confirmEmail.fulfilled, (state, action) => {
+				localStorage.removeItem("auth");
+				state.confirmEmail = Status.SUCCESS;
+			})
+			.addCase(confirmEmail.rejected, (state, action) => {
+				state.confirmEmail = Status.FAILED;
 			})
 			//#endregion
 
