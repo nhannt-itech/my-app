@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Status, ClientUrl } from "../../../constants";
 import { Spin, Result, Button } from "antd";
-import { Navigate, Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { confirmEmail } from "../../../redux/identity.slice";
 import "./styles.scss";
 
