@@ -22,3 +22,5 @@ export const ReconfirmEmailPage = () => {
 		);
 	return <Navigate to={ClientUrl.HOME} />;
 };
+
+ReconfirmEmailPage.displayName = "ReconfirmEmailPage";

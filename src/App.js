@@ -24,7 +24,7 @@ const App = () => {
 			<Route path="/identity" element={<IdentityLayout />}>
 				<Route path="sign-in" element={<SignInPage />} />
 				<Route path="sign-up" element={<SignUpPage />} />
-				<Route path="confirm-email" element={<ConfirmEmailPage />} />
+				<Route path="confirm-email/:token" element={<ConfirmEmailPage />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Route>
 		</Routes>
